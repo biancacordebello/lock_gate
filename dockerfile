@@ -1,5 +1,5 @@
 # 1. Usar a imagem base do Python
-FROM python:3.9-slim
+FROM python:3
 
 # 2. Atualizar e instalar dependências do sistema necessárias para OpenCV e dlib
 RUN apt-get update && apt-get install -y \
@@ -20,8 +20,7 @@ COPY templates/ templates/
 COPY main.py .
 
 # 5. Instalar as bibliotecas Python necessárias
-RUN pip3 install --upgrade pip && pip install --no-cache-dir flask opencv-python face_recognition
-
+RUN pip install --upgrade pip && pip install --no-cache-dir flask opencv-python face_recognition setuptools
 
 # 6. Expor a porta que a aplicação Flask vai utilizar
 EXPOSE 8080
